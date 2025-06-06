@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>India's Unicorn Revolution</title>
+
+    <!-- Heading font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Scripts -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+    <script src="js/sankey.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Popup overlay for sankey graph section -->
+    <div id="popup-overlay" class="popup-overlay hidden">
+      <div class="popup-content">
+        <h3>How To Interact</h3>
+        <p>
+          Click on industry or state names to highlight their connections across
+          both charts.
+        </p>
+        <p>Hover over nodes and flow lines to see detailed unicorn counts.</p>
+        <button id="popup-close" class="popup-close">Interact!</button>
+      </div>
+    </div>
+
+    <main>
+      <!-- Landing section -->
+      <section class="section landing-image" aria-labelledby="hero-title">
+        <div class="badge">Geographic Distribution</div>
+        <h1>
+          <span class="highlight">India's Unicorns</span> Are Surprisingly
+          Spread Out
+        </h1>
+        <p class="subtitle">
+          The USA created 215+ unicorns, with most concentrated in California,
+          New York, and Massachusetts.
+        </p>
+        <p class="subtitle">
+          <span class="highlight">
+            India built 75+ unicorns spread equitably across 8 states.</span
+          >
+          A much more distributed pattern than most other startup ecosystems.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">75+</span>
+            <span class="stat-label">Indian Unicorns</span>
+          </div>
+          <div class="stat-vs">vs</div>
+          <div class="stat">
+            <span class="stat-number">215+</span>
+            <span class="stat-label">USA Unicorns</span>
+          </div>
+        </div>
+        <div class="scroll-hint">Scroll to see the growth comparison ↓</div>
+      </section>
+
+      <!-- Bar chart race story -->
+      <section class="section growth" aria-labelledby="growth-title">
+        <h2 id="growth-title">
+          How<span class="highlight"> India</span> Caught Up
+        </h2>
+        <div
+          class="flourish-embed flourish-bar-chart-race"
+          data-src="visualisation/23312034"
+        >
+          <script src="https://public.flourish.studio/resources/embed.js"></script>
+          <noscript>
+            <img
+              src="https://public.flourish.studio/visualisation/23312034/thumbnail"
+              width="100%"
+              alt="Bar chart race showing unicorn growth in India and USA"
+            />
+          </noscript>
+        </div>
+        <p class="desc">
+          <span class="highlight"
+            >India's unicorn growth only accelerated rapidly after 2018.</span
+          >
+        </p>
+        <div class="scroll-hint">
+          Scroll to learn how that acceleration happened after 2017 ↓
+        </div>
+      </section>
+
+      <!-- Explaining the bar chart -->
+      <section class="section growth" aria-labelledby="explanation-title">
+        <h2 id="explanation-title">
+          Different Approaches to<span class="highlight">
+            Building Ecosystems</span
+          >
+        </h2>
+        <p class="desc">
+          Until 2017, India had only one unicorn. The rapid growth that followed
+          took a different form than in other countries.
+        </p>
+        <p class="desc">
+          While most successful startup ecosystems concentrate in major
+          metropolitan areas, India's unicorns emerged from a diverse range of
+          locations and industries.
+        </p>
+        <p class="desc">
+          <span class="highlight">
+            This distributed approach to utilizing resources across the country
+            helped India become the world's third-largest unicorn
+            ecosystem.</span
+          >
+        </p>
+        <div class="scroll-hint">
+          Scroll to compare the industry and state distributions ↓
+        </div>
+      </section>
+
+      <!-- Sankey graphs -->
+      <section class="section sankey-section" aria-labelledby="sankey-title">
+        <h2 id="sankey-title">
+          Industry and<span class="highlight"> Geographic Distribution</span>
+        </h2>
+
+        <p class="desc">
+          The flow diagrams below show how unicorns are distributed across
+          industries and states in both countries.
+        </p>
+        <p class="desc">
+          <span class="highlight">
+            Notice the difference in concentration patterns?</span
+          >
+        </p>
+
+        <div class="sankey-wrapper">
+          <!-- India sankey -->
+          <div class="card">
+            <h3>
+              <span class="highlight">India:</span> Distributed Across States
+            </h3>
+            <p class="card-desc">
+              Karnataka leads with most unicorns, but significant numbers also
+              come from Maharashtra, Haryana, and Delhi. Financial technology
+              and e-commerce are the largest sectors, but unicorns span many
+              industries.
+            </p>
+            <div id="india-sankey" class="sankey-container"></div>
+          </div>
+
+          <!-- USA sankey -->
+          <div class="card">
+            <h3>USA: Concentrated in Key States</h3>
+            <p class="card-desc">
+              California dominates with most unicorns, followed by New York and
+              Massachusetts. Software companies make up the largest category.
+            </p>
+            <div id="us-sankey" class="sankey-container"></div>
+          </div>
+        </div>
+        <div class="scroll-hint">Scroll for key takeaways ↓</div>
+      </section>
+
+      <!-- Conclusion section -->
+      <section class="section conclusion" aria-labelledby="conclusion-title">
+        <div class="badge">Key Findings</div>
+        <h1 id="conclusion-title">
+          Two Models of <span class="highlight">Startup Ecosystems</span>
+        </h1>
+        <p class="subtitle">
+          The USA demonstrates the power of concentrated ecosystems. Deep
+          networks of talent, capital, and expertise in a few key locations.
+        </p>
+        <p class="subtitle">
+          <span class="highlight">
+            India shows how distributed ecosystems can also work.</span
+          >
+          Unicorns emerging from multiple states and industries, with less
+          geographic concentration.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">3rd</span>
+            <span class="stat-label">Largest Ecosystem</span>
+          </div>
+          <div class="stat-vs">via</div>
+          <div class="stat">
+            <span class="stat-number">Geographic</span>
+            <span class="stat-label">Distribution</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        I acknowledge the use of ChatGPT and ClaudeAI in the creation of this
+        website.
+      </p>
+      <p>
+        I have fully adhered to academic integrity guidelines, ensuring that all
+        data analysis was completed before being input into GenAI for conversion
+        into an interactive Sankey diagram.
+      </p>
+      <p>
+        The code and its corresponding AI usage acknowledgements can be viewed
+        by opening the index.html file in a web browser, right-clicking and
+        selecting 'Inspect', and navigating to the 'Sources' tab where the
+        codebase can be seen.
+      </p>
+    </footer>
+  </body>
+</html>
